@@ -1,1 +1,15 @@
-<h1>Show Book Detail</h1>
+<h1>Place of Books</h1>
+
+<%= link_to "List of Books", books_path %>
+
+  <h4>
+    <%= @book.id %>:
+    <%= @book.title %>
+    <%= link_to "Edit Book", edit_book_path(@book.id) %>
+    <%= link_to "Delete Book", book_path(@book.id), method: :delete %>
+  </h4>
+  <p>
+    <%= @book.publication_date %>
+    <%= @book.available %>
+    <%= @book.description %>
+  </p>

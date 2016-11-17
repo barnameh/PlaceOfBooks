@@ -1,2 +1,24 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+
+<h1>Edit Book Info</h1>
+
+<% @book.errors.full_messages.each do |error| %>
+  <%= error %>
+<% end %>
+
+<%= form_for @book do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description,  class: 'form-control' %>
+
+  <%= f.label :publication_date %>
+  <%= f.date_field :publication_date,  class: 'form-control' %>
+
+  <%= f.label :available %>
+  <%= f.text_field :available,  class: 'form-control' %>
+
+  <%= f.submit class: "btn btn-primary"%>
+
+<% end %>

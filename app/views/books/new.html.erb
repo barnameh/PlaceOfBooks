@@ -4,26 +4,20 @@
   <%= error %>
 <% end %>
 
-<p>
-  <%= link_to "All Books", books_path %>
-</p>
+<%= form_for @book do |f| %>
 
-<%= form_tag books_path do %>
-  <%= label_tag "book[title]", "Title" %>
-  <%= text_field_tag "book[title]", @book.title %>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
 
-<p>
-  <%= label_tag "book[description]", "Description" %>
-  <%= text_field_tag "book[description]", @book.description,  class: 'form-control' %>
-</p>
+  <%= f.label :description %>
+  <%= f.text_field :description,  class: 'form-control' %>
 
-<p>
-  <%= label_tag "book[publication_date]", "Publication Date" %>
-  <%= text_field_tag "book[publication_date]", @book.publication_date %>
-</p>
+  <%= f.label :publication_date %>
+  <%= f.date_field :publication_date,  class: 'form-control' %>
 
-  <%= label_tag "book[available]", "Available?" %>
-  <%= text_field_tag "book[available]", @book.available %>
+  <%= f.label :available %>
+  <%= f.text_field :available,  class: 'form-control' %>
 
-  <%= submit_tag %>
+  <%= f.submit class: "btn btn-primary"%>
+
 <% end %>
