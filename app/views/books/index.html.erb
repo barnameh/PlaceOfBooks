@@ -10,7 +10,7 @@
       <%= link_to "Delete Book", book_path(book.id), method: :delete %>
     </h4>
     <p>
-      <%= book.publication_date %>
+      <%= book.publication_date.strftime("%Y") %>
     </p>
     <p>
       <%= book.available %>

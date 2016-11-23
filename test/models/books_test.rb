@@ -9,6 +9,13 @@ class BookTest < ActiveSupport::TestCase
     assert book.save
   end
 
+  test "book must have a title" do
+    book = Book.new(description: "How to recognize and understand ADHD",
+                    publication_date: Time.new(1995),
+                    available: true)
+    assert_not book.save
+  end
+
   test "can update a book" do
     book = Book.create!(title: "Driven to Distraction",
                         description: "How to recognize and understand ADHD",
