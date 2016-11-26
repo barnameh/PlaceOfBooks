@@ -1,0 +1,26 @@
+<h1 class='well'>New Reservation</h1>
+
+<% @reservation.errors.full_messages.each do |error| %>
+  <div class='well'><%= error %></div>
+<% end %>
+
+<h4 class='well'><%= @reservation.book.title %></h4>
+
+<div class='well'>
+  <%= form_for @reservation do |f| %>
+
+    <%= f.label :loan_date %>
+    <%= f.date_field :loan_date,  class: 'form-control' %>
+
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date,  class: 'form-control' %>
+
+    <%= f.label :return_date %>
+    <%= f.date_field :return_date,  class: 'form-control' %>
+
+    <%= f.hidden_field :book_id %> 
+    <br>
+    <%= f.submit class: "btn btn-primary"%>
+
+    <% end %>
+</div>

@@ -1,23 +1,25 @@
-<h1>New Book</h1>
+<h1 class='well'>New Book</h1>
 
 <% @book.errors.full_messages.each do |error| %>
-  <%= error %>
+  <div class="well alert alert-danger"><%= error %></div>
 <% end %>
 
-<%= form_for @book do |f| %>
+<div class='well'>
+  <%= form_for @book do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
+    <%= f.label :title %>
+    <%= f.text_field :title,  class: 'form-control' %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description,  class: 'form-control' %>
+    <%= f.label :description %>
+    <%= f.text_field :description,  class: 'form-control' %>
 
-  <%= f.label :publication_date %>
-  <%= f.date_field :publication_date,  class: 'form-control' %>
+    <%= f.label :publication_date %>
+    <%= f.date_field :publication_date,  class: 'form-control' %>
 
-  <%= f.label :available %>
-  <%= f.text_field :available,  class: 'form-control' %>
+    <%= f.label :available %>
+    <%= f.text_field :available,  class: 'form-control' %>
 
-  <%= f.submit class: "btn btn-primary"%>
+    <%= f.submit class: "btn btn-primary"%>
 
-<% end %>
+  <% end %>
+</div?

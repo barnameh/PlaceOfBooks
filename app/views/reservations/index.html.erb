@@ -1,0 +1,43 @@
+<h1 class="well well-sm">Place of Books - Reservations</h1>
+
+<table class="table table-responsive well">
+  <thead>
+    <tr>
+      <th class="col-sx-5">Book Title</th>
+      <th class="col-sx-1">Loan Date</th>
+      <th class="col-sx-1">Due Date</th>
+      <th class="col-sx-1">Return Date</th>
+      <th class="col-sx-1"></th>
+      <th class="col-sx-1"></th>
+      <th class="col-sx-1"></th>
+      <th class="col-sx-1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |r| %>
+    <tr>
+      <td><%= link_to r.book.title, book_path(r.book_id)%></td>
+      <td><%= r.loan_date.strftime("%F") %></td>
+      <td><%= r.due_date.strftime("%F") %></td>
+      <% if r.return_date %>
+        <td><%= r.return_date.strftime("%F") %></td>
+      <% else %>
+        <td> </td>
+      <% end %>
+      <td><button type='button' class='btn btn-info custom-width'><%= link_to 'Details', reservation_path(r.id) %></button></td>
+      <td><button type='button' class='btn btn-info custom-width'><%= link_to 'Edit', edit_reservation_path(r.id) %></button></td>
+      <% if r.return_date %>
+        <td><button type='button' class='btn btn-info custom-width' disabled="disabled">Extend</button></td>
+        <td><button type='button' class='btn btn-info custom-width' disabled="disabled">Return</button></td>
+      <% else %>
+        <td><button type='button' class='btn btn-info custom-width active'>
+          <%= link_to "Extend", reservation_path(id:  r.id, due_date: Date.today.next_month), method: :patch %>
+        </button></td>
+        <td><button type='button' class='btn btn-info custom-width active'>
+          <%= link_to "Return", reservation_path(id:  r.id, return_date: Date.today), method: :patch %>
+        </button></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,28 @@
+<h1 class='well'>Edit Reservation</h1>
+
+<% if @reservation.return_date == nil && @reservation.due_date < Time.now %>
+  <h2 class="well well-sm alert alert-danger">Over Due!</h2>
+<% end %>
+
+<% @reservation.errors.full_messages.each do |error| %>
+  <div class='well'><%= error %></div>
+<% end %>
+
+<h4 class='well'><%= @reservation.book.title %></h4>
+
+<div class='well'>
+  <%= form_for @reservation do |f| %>
+
+    <%= f.label :loan_date %>
+    <%= f.date_field :loan_date,  class: 'form-control' %>
+
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date,  class: 'form-control' %>
+
+    <%= f.label :return_date %>
+    <%= f.date_field :return_date,  class: 'form-control' %>
+    <br>
+    <%= f.submit class: "btn btn-primary"%>
+
+    <% end %>
+</div>

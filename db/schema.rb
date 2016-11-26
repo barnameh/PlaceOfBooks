@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115210443) do
+ActiveRecord::Schema.define(version: 20161125142623) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20161115210443) do
     t.integer  "book_id"
     t.datetime "loan_date"
     t.datetime "due_date"
-    t.datetime "returned_date"
+    t.datetime "return_date"
   end
 
 end
